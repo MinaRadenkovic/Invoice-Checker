@@ -1,0 +1,4 @@
+domain\Invoice.class
+domain\InvoiceSpecification.class
+invoiceChecker\InvoiceChecker.class
+MMLapp\projekat\App.class
