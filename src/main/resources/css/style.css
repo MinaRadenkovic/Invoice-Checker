@@ -1,0 +1,8 @@
+.text-field .prompt-text {
+    -fx-fill: gray;
+    -fx-font-style: italic;
+}
+
+.text-area .prompt-text {
+    -fx-fill: #888888;
+}
