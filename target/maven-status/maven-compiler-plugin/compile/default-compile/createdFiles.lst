@@ -1,5 +1,5 @@
-MMLapp\Main.class
 domain\Invoice.class
+CSV\CsvWithOpenCsv.class
+MMLapp\Main.class
 domain\InvoiceSpecification.class
 invoiceChecker\InvoiceChecker.class
-CSV\CsvWithOpenCsv.class
