@@ -1,5 +1,6 @@
 domain\Invoice.class
 CSV\CsvWithOpenCsv.class
+gui\MainView.class
 MMLapp\Main.class
 domain\InvoiceSpecification.class
 invoiceChecker\InvoiceChecker.class
