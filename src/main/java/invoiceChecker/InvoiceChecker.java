@@ -16,6 +16,9 @@ import domain.InvoiceSpecification;
 public class InvoiceChecker {
 
 	public static JsonNode Checker(String url) {
+		if (url == null) {
+			return null;
+		}
 	    try {
 	        URL obj = new URL(url);
 	        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -37,7 +40,6 @@ public class InvoiceChecker {
 	            JsonNode rootNode = mapper.readTree(jsonRaw);
 	            return rootNode;
 	        } else {
-	            System.out.println("ERROR: Greška u odgovoru:" + responseCode);
 	            return null;
 	        }
 	    } catch (Exception e) {
@@ -56,6 +58,9 @@ public class InvoiceChecker {
     
 	public static String getTaxId(String url) {
 		JsonNode json = Checker(url);
+		if (json == null) {
+			return null;
+		}
 		JsonNode invoiceRequest = getInvoiceRequestNode(json);
 		String taxId = invoiceRequest.get("taxId").asText();
 		return taxId;
@@ -63,6 +68,9 @@ public class InvoiceChecker {
 	
 	public static String getBuyer(String url) {
 		JsonNode json = Checker(url);
+		if (json == null) {
+			return null;
+		}
 		JsonNode invoiceRequest = getInvoiceRequestNode(json);
 		String buyer = invoiceRequest.get("buyer").asText();
 		return buyer;
@@ -70,6 +78,9 @@ public class InvoiceChecker {
 	
 	public static String getPaymentType(String url) {
 		JsonNode json = Checker(url);
+		if (json == null) {
+			return null;
+		}
 		JsonNode invoiceRequest = getInvoiceRequestNode(json);
 		JsonNode payments = invoiceRequest.get("payments");
 		String paymentType = null;
@@ -81,6 +92,9 @@ public class InvoiceChecker {
 	
 	public static String getAmount(String url) {
 		JsonNode json = Checker(url);
+		if (json == null) {
+			return null;
+		}
 		JsonNode invoiceRequest = getInvoiceRequestNode(json);
 		JsonNode payments = invoiceRequest.get("payments");
 		String amount = null;
@@ -92,6 +106,9 @@ public class InvoiceChecker {
 	
 	public static String getInvoiceNumber(String url) {
 		JsonNode json = Checker(url);
+		if (json == null) {
+			return null;
+		}
 		JsonNode invoiceRequest = getInvoiceResultNode(json);
 		String invoiceNumber = invoiceRequest.get("invoiceNumber").asText();
 		return invoiceNumber;
@@ -99,6 +116,9 @@ public class InvoiceChecker {
 	
 	public static String getSdcTime(String url) {
 		JsonNode json = Checker(url);
+		if (json == null) {
+			return null;
+		}
 		JsonNode invoiceRequest = getInvoiceResultNode(json);
 		String sdcTime = invoiceRequest.get("sdcTime").asText();
 		return sdcTime;

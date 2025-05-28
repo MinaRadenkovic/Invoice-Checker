@@ -11,7 +11,10 @@ import java.io.IOException;
 
 public class CsvWithOpenCsv {
 	
-    public static void writeToCSV(Invoice invoice) {
+    public static boolean writeToCSV(Invoice invoice) {
+    	if (invoice == null) {
+    		return false;
+    	}
     	String folderPath = System.getProperty("user.home") + "/Downloads/invoices";
     	File folder = new File(folderPath);
     	if (!folder.exists()) {
@@ -25,13 +28,18 @@ public class CsvWithOpenCsv {
         	writer.writeNext(row1);        	
             String[] specification = { "Name", "GrossUnitPrice", "Quantity", "TotalPrice", "Rate" };
             writer.writeNext(specification);
+            if (invoice.getInvoiceSpecification() == null) {
+            	return false;
+            }
             for (int i = 0; i < invoice.getInvoiceSpecification().size(); i++) {
             	InvoiceSpecification invoiceSpecification = invoice.getInvoiceSpecification().get(i);
             	String[] row2 = {invoiceSpecification.getName(), invoiceSpecification.getGrossUnitPrice(), invoiceSpecification.getQuantity(), invoiceSpecification.getTotalPrice(), invoiceSpecification.getRate()};
             	writer.writeNext(row2);
             }
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return false;
     }
 }
