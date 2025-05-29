@@ -29,5 +29,5 @@ To run the application, use the following VM arguments (adjust the JavaFX path i
 If you're using an IDE like IntelliJ IDEA or Eclipse, make sure to add these VM options in your run configuration.
 
 ## 👩🏻‍💻 Author
-Developed by [Mina Radenković](https://github.com/MinaRadenkovic) as a real-world solution for her family's business needs.
+Developed by [Mina Radenković](https://github.com/MinaRadenkovic) as a real-world solution for family's business needs.
 
