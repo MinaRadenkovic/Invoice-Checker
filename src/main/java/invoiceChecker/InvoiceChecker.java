@@ -140,9 +140,18 @@ public class InvoiceChecker {
 	    String articles = journalNode.substring(startIndex + startMarker.length(), endIndex).trim();
 		ArrayList<InvoiceSpecification> specification = new ArrayList<InvoiceSpecification>();
 		String[] LineItem = articles.split("\\r\\n");
-		for(int i = 0; i < LineItem.length; i = i + 2) {
-		    String name = LineItem[i].substring(0, LineItem[i].indexOf('('));
-		    String rate = LineItem[i].substring(LineItem[i].indexOf('(') + 1, LineItem[i].indexOf(")"));
+		String name, rate = "";
+		int i = 0;
+		while(i < LineItem.length) {
+			if (LineItem[i].trim().endsWith(")")) {
+				name = LineItem[i].substring(0, LineItem[i].indexOf('('));
+		    	rate = LineItem[i].substring(LineItem[i].indexOf('(') + 1, LineItem[i].indexOf(")")); 
+		    } else {
+		    	String lineItem = LineItem[i] + LineItem[i+1];
+				name = lineItem.substring(0, lineItem.indexOf('('));
+		    	rate = lineItem.substring(lineItem.indexOf('(') + 1, lineItem.indexOf(")")); 
+		    	i++;
+		    }
 		    String[] pricing = LineItem[i + 1].trim().split("\\s+");
 		    if (pricing.length != 3) {
 		    	return null;
@@ -151,6 +160,7 @@ public class InvoiceChecker {
 		    String quantity = pricing[1];
 		    String totalPrice = pricing[2];
 		    specification.add(new InvoiceSpecification(name, grossUnitPrice, quantity, totalPrice, rate));
+		    i = i + 2;
 		}
 	    return specification;
 	}
