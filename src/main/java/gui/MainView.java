@@ -70,8 +70,9 @@ public class MainView {
             boolean exported = CsvWithOpenCsv.writeToCSV(invoice);
 
             if (exported) {
-                showAlert(Alert.AlertType.INFORMATION, "Export to CSV", null,
-                        "Invoice data has been exported to CSV!", "/images/logo.png", "/icons/checked.png");
+//                showAlert(Alert.AlertType.INFORMATION, "Export to CSV", null,
+//                        "Invoice data has been exported to CSV!", "/images/logo.png", "/icons/checked.png");
+                textArea.setText("");
             } else {
                 showAlert(Alert.AlertType.ERROR, "Export to CSV", null,
                         "Invoice data has NOT been exported to CSV!", "/images/logo.png", "/icons/cancel.png");
