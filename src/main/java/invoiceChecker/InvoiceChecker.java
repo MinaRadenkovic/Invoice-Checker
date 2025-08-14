@@ -143,7 +143,7 @@ public class InvoiceChecker {
 		String name, rate = "";
 		int i = 0;
 		while(i < LineItem.length) {
-			if (LineItem[i].trim().endsWith(")")) {
+			if (LineItem[i].replaceAll("\\s+$", "").endsWith(")")) {
 				name = LineItem[i].substring(0, LineItem[i].indexOf('('));
 		    	rate = LineItem[i].substring(LineItem[i].indexOf('(') + 1, LineItem[i].indexOf(")")); 
 		    } else {

@@ -20,7 +20,7 @@ public class CsvWithOpenCsv {
     	if (!folder.exists()) {
     	    folder.mkdirs();  
     	}
-    	String filePath = folderPath + "/" + invoice.getInvoiceNumber() + ".csv";
+    	String filePath = folderPath + File.separator + invoice.getInvoiceNumber() + ".csv";
         try (CSVWriter writer = new CSVWriter(new FileWriter(filePath))) {
         	String[] header = {"InvoiceNumber", "sdcTime", "Buyer", "TaxId", "Amount", "PaymentType"};
         	writer.writeNext(header);
